@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Resume</title>
+  <style>
+    /* ====== THEME ====== */
+    :root {
+      --bg: #ffffff;
+      --ink: #111827; /* gray-900 */
+      --muted: #4b5563; /* gray-600 */
+      --accent: #2563eb; /* blue-600 */
+      --chip-bg: #eef2ff; /* indigo-50 */
+      --rule: #e5e7eb; /* gray-200 */
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f16;
+        --ink: #e5e7eb;
+        --muted: #a1a1aa;
+        --accent: #60a5fa;
+        --chip-bg: rgba(96, 165, 250, 0.15);
+        --rule: #1f2937;
+      }
+    }
+
+    /* ====== GLOBAL ====== */
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 14px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    * { box-sizing: border-box; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container {
+      max-width: 1000px; margin: 28px auto; padding: 0 20px;
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      display: grid; gap: 8px; align-items: center;
+      grid-template-columns: 1fr; padding-bottom: 18px; border-bottom: 1px solid var(--rule);
+    }
+    .identity { display: flex; align-items: center; gap: 16px; }
+    .avatar {
+      width: 80px; height: 80px; border-radius: 16px; background: var(--chip-bg);
+      display: inline-flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent);
+    }
+    h1 { font-size: 28px; line-height: 1.2; margin: 0; }
+    .title { color: var(--muted); font-weight: 500; }
+    .contact { display: flex; flex-wrap: wrap; gap: 10px 16px; color: var(--muted); }
+    .contact span { display: inline-flex; gap: 8px; align-items: center; }
+
+    /* ====== LAYOUT ====== */
+    .grid {
+      display: grid; gap: 24px; margin-top: 24px;
+      grid-template-columns: 1fr; /* mobile */
+    }
+    @media (min-width: 880px) {
+      .grid { grid-template-columns: 2.2fr 1fr; }
+    }
+
+    /* ====== SECTIONS ====== */
+    section { display: grid; gap: 10px; }
+    .section-title { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .item { display: grid; gap: 6px; }
+    .item-header { display: flex; justify-content: space-between; gap: 12px; }
+    .item-header b { font-size: 16px; }
+    .muted { color: var(--muted); }
+    ul.compact { margin: 0; padding-left: 18px; }
+    ul.compact li { margin: 2px 0; }
+
+    /* ====== CHIPS / TAGS ====== */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 6px 10px; border-radius: 999px; background: var(--chip-bg); font-size: 12px; }
+
+    /* ====== CARDS (Right Column) ====== */
+    .card { border: 1px solid var(--rule); border-radius: 16px; padding: 16px; display: grid; gap: 10px; }
+
+    /* ====== PRINT (A4-friendly) ====== */
+    @page { size: A4; margin: 14mm; }
+    @media print {
+      body { font-size: 12px; }
+      .container { max-width: none; margin: 0; padding: 0; }
+      header { padding-bottom: 8px; }
+      .avatar { display: none; }
+      .grid { grid-template-columns: 2fr 1fr; gap: 16px; }
+      a { color: inherit; text-decoration: none; }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="identity">
+        <div class="avatar" aria-hidden="true">YN</div>
+        <div>
+          <h1>Your Name</h1>
+          <div class="title">Job Title • Specialization</div>
+        </div>
+      </div>
+      <div class="contact" aria-label="Contact Links">
+        <span>📍 City, Country</span>
+        <span>✉️ <a href="mailto:you@example.com">you@example.com</a></span>
+        <span>📱 <a href="tel:+19999999999">+1 999 999 9999</a></span>
+        <span>🔗 <a href="https://your-portfolio.com" target="_blank" rel="noopener">your-portfolio.com</a></span>
+        <span>💼 <a href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noopener">linkedin.com/in/yourhandle</a></span>
+        <span>🐙 <a href="https://github.com/yourhandle" target="_blank" rel="noopener">github.com/yourhandle</a></span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- ====== LEFT / MAIN ====== -->
+      <main style="display:grid; gap:24px;">
+        <section>
+          <div class="section-title">Professional Summary</div>
+          <p class="muted" style="margin:0;">
+            Concise 2–3 line summary highlighting your years of experience, domain expertise, key achievements, and what you’re looking for next.
+          </p>
+        </section>
+
+        <section>
+          <div class="section-title">Experience</div>
+
+          <div class="item">
+            <div class="item-header">
+              <b>Senior Role — Company Name</b>
+              <span class="muted">Jan 2022 – Present · Location</span>
+            </div>
+            <div class="muted">Brief one-line description of the team, product, or impact.</div>
+            <ul class="compact">
+              <li>Achievement/result starting with a strong verb; quantify impact (e.g., increased conversions by 18%).</li>
+              <li>Another bullet focusing on your ownership, tech, or cross-functional collaboration.</li>
+              <li>One more bullet describing efficiency, quality, or cost improvements.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Skill/Tool</span>
+              <span class="chip">Skill/Tool</span>
+              <span class="chip">Skill/Tool</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <b>Role — Company Name</b>
+              <span class="muted">Jul 2019 – Dec 2021 · Location</span>
+            </div>
+            <div class="muted">Short description to set context.</div>
+            <ul class="compact">
+              <li>Bullet with measurable outcome and scope.</li>
+              <li>Bullet that showcases leadership, mentoring, or stakeholder management.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Projects</div>
+          <div class="item">
+            <div class="item-header">
+              <b>Project Name</b>
+              <span class="muted">Tech Stack</span>
+            </div>
+            <div class="muted">One-line problem statement and value delivered. Link to demo or repo if possible.</div>
+            <ul class="compact">
+              <li>Feature implemented or challenge solved → result/metric.</li>
+              <li>Interesting design/architecture decision, testing, or performance improvement.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Education</div>
+          <div class="item">
+            <div class="item-header">
+              <b>Degree, Major — University Name</b>
+              <span class="muted">2015 – 2019 · Location</span>
+            </div>
+            <div class="muted">CGPA/Percentage (optional) • Notable coursework or honors.</div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ====== RIGHT / SIDEBAR ====== -->
+      <aside style="display:grid; gap:24px;">
+        <div class="card">
+          <div class="section-title">Skills</div>
+          <div class="chips">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Git</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Certifications</div>
+          <ul class="compact">
+            <li>Certification Name — Issuer (Year)</li>
+            <li>Certification Name — Issuer (Year)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Awards</div>
+          <ul class="compact">
+            <li>Award or Recognition — Org (Year)</li>
+            <li>Hackathon Winner — Event (Year)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Languages</div>
+          <ul class="compact">
+            <li>English — Professional</li>
+            <li>Hindi — Native</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Interests</div>
+          <div class="chips">
+            <span class="chip">Open Source</span>
+            <span class="chip">UI/UX</span>
+            <span class="chip">Travel</span>
+            <span class="chip">Reading</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="muted" style="margin-top:24px; font-size:12px;">
+      Tip: Use <kbd>Ctrl/Cmd + P</kbd> to save as PDF (A4 optimized). Edit colors in <code>:root</code>.
+    </footer>
+  </div>
+</body>
+</html>
